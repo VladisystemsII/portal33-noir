@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Notificaciones / Búsqueda - Portal33</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Déjanos tu requerimiento y recibe notificaciones de nuevas propiedades en la zona norte de Bogotá directamente en tu celular o correo.">
+  <meta property="og:title" content="Notificaciones / Búsqueda - Portal33">
+  <meta property="og:description" content="Encuentra la propiedad que buscas. Regístrate y te avisamos cuando tengamos algo para ti.">
+  <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="notificaciones.css">
+</head>
+
+<body>
+
+  <!-- HEADER cargado dinámicamente desde modules/header.html -->
+  <div id="header-container"></div>
+
+  <!-- MÓDULO NOTIFICACIONES / BÚSQUEDA -->
+  <section id="notificaciones-busqueda" class="captura-usuario">
+    <h2>Notificaciones / Búsqueda</h2>
+
+    <!-- PASOS DEL PROCESO -->
+    <div class="lista-pasos">
+      <p>Para recibir propiedades o dejarnos tu requerimiento, sigue estos pasos:</p>
+      <ol>
+        <li>Deja tus datos de contacto.</li>
+        <li>Selecciona el tipo de propiedad o requerimiento.</li>
+        <li>Recibe notificaciones de nuevas propiedades directamente en tu celular o correo.</li>
+        <li>Si no encontraste lo que buscas, déjanos tu solicitud en el formulario.</li>
+      </ol>
+    </div>
+
+    <!-- BOTÓN CTA — lleva al formulario -->
+    <div class="cta-form-top">
+      <button id="scrollToForm">Comenzar ahora</button>
+    </div>
+
+    <!-- FORMULARIO GOOGLE FORM EMBEBIDO -->
+    <div class="form-google">
+      <iframe
+        id="googleForm"
+        src="https://docs.google.com/forms/d/e/1FAIpQLSdKdP1P9vkldgIZWA5symwzMS9_TQ35wYC1dw3xsldeMkGeog/viewform?usp=sf_link"
+        width="100%"
+        height="800"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        title="Formulario de notificaciones y búsqueda de propiedades Portal33">
+        Cargando formulario...
+      </iframe>
+    </div>
+
+  </section>
+
+  <!-- FOOTER cargado dinámicamente desde modules/footer.html -->
+  <div id="footer-container"></div>
+
+  <!-- =======================================
+       SCRIPTS
+       Orden requerido:
+       1. header-loader  → inyecta HTML del header
+       2. header.js      → enlace activo + submódulos
+       3. footer-loader  → inyecta HTML del footer
+       4. menu-mobile    → menú responsive
+       5. notificaciones → scroll del CTA al formulario
+  ======================================= -->
+  <script src="js/header-loader.js"></script>
+  <script src="js/header.js"></script>
+  <script src="js/footer-loader.js"></script>
+  <script src="js/menu-mobile.js"></script>
+  <script src="js/notificaciones.js"></script>
+
+</body>
+</html>
