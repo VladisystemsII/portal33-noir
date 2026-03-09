@@ -20,12 +20,15 @@ function extraerFileId(url) {
 
 function normalizarFoto(url) {
   if (!url || url.trim() === '') return null;
-  if (url.includes('drive.google.com/uc?')) return url;
 
+  // Extraer fileId de cualquier formato de URL de Drive
   const fileId = extraerFileId(url);
   if (fileId) {
-    return `https://drive.google.com/thumbnail?id=${fileId}&sz=w400`;
+    // lh3.googleusercontent.com funciona en móviles sin autenticación
+    return `https://lh3.googleusercontent.com/d/${fileId}`;
   }
+
+  // Si no es Drive, retornar URL original
   return url;
 }
 
