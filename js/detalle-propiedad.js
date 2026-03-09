@@ -25,8 +25,8 @@ function normalizarFoto(url) {
   // Extraer fileId de cualquier formato de URL de Drive
   const fileId = extraerFileId(url);
   if (fileId) {
-    // lh3.googleusercontent.com funciona en móviles sin autenticación
-    return `https://lh3.googleusercontent.com/d/${fileId}`;
+    // thumbnail es el formato que funciona en móvil con GitHub Pages
+    return `https://drive.google.com/thumbnail?id=${fileId}&sz=w1200`;
   }
 
   // Si no es Drive, retornar URL original
