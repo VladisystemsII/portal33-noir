@@ -9,124 +9,511 @@
   <meta property="og:description" content="Deja tus datos y tu propiedad estará en nuestro catálogo en pocos días.">
   <link rel="icon" href="img/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
   <style>
-    /* ── captacion.css ──────────────────────────────────────────
-       Estilos específicos del módulo de captación.
-       Pendiente: mover a captacion.css cuando se separe por archivos.
-    ────────────────────────────────────────────────────────── */
+    /* ===== CAPTACIÓN — DISEÑO PREMIUM PORTAL33 ===== */
 
-    .captura-cliente {
-      padding: 50px 20px;
-      background-color: #f9f9f9;
-      border-radius: 12px;
-      margin: 50px auto;
-      max-width: 900px;
+    .captacion-page {
+      min-height: calc(100vh - var(--header-height));
+      background: #fafaf8;
+      padding: 60px 20px 80px;
     }
 
-    .captura-cliente h2 {
+    /* ── Hero header ── */
+    .captacion-hero {
+      max-width: 700px;
+      margin: 0 auto 56px;
       text-align: center;
-      font-size: 2rem;
-      margin-bottom: 25px;
-      color: #1a1a1a;
     }
 
-    .lista-pasos {
+    .captacion-eyebrow {
+      display: inline-block;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 18px;
+      padding: 6px 16px;
+      border: 1px solid #ddd;
+      border-radius: 20px;
+      background: #fff;
+    }
+
+    .captacion-hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      font-weight: 600;
+      color: #111;
+      line-height: 1.15;
+      margin-bottom: 18px;
+      letter-spacing: -0.01em;
+    }
+
+    .captacion-hero p {
+      font-family: 'DM Sans', sans-serif;
       font-size: 1rem;
-      line-height: 1.6;
+      color: #666;
+      line-height: 1.7;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    /* ── Pasos ── */
+    .pasos-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      max-width: 860px;
+      margin: 0 auto 56px;
+    }
+
+    .paso-item {
+      background: #fff;
+      border: 1px solid #e8e8e8;
+      border-radius: 12px;
+      padding: 20px 16px;
+      text-align: center;
+      transition: box-shadow 0.25s ease, transform 0.25s ease;
+    }
+
+    .paso-item:hover {
+      box-shadow: 0 8px 24px rgba(0,0,0,0.07);
+      transform: translateY(-2px);
+    }
+
+    .paso-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #111;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+
+    .paso-txt {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.82rem;
+      color: #666;
+      line-height: 1.5;
+    }
+
+    /* ── Formulario card ── */
+    .form-card {
+      max-width: 720px;
+      margin: 0 auto;
+      background: #fff;
+      border: 1px solid #e8e8e8;
+      border-radius: 20px;
+      padding: 48px 52px;
+      box-shadow: 0 4px 40px rgba(0,0,0,0.06);
+    }
+
+    .form-card-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: #111;
+      margin-bottom: 32px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    /* ── Filas del formulario ── */
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
       margin-bottom: 20px;
     }
 
-    .lista-pasos ol {
-      padding-left: 20px;
+    .form-row.full {
+      grid-template-columns: 1fr;
     }
 
-    /* CTA antes del formulario */
-    .cta-form-top {
+    /* ── Campo ── */
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .form-field label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #444;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .form-field input {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.97rem;
+      color: #111;
+      background: #fafaf8;
+      border: 1.5px solid #e0e0e0;
+      border-radius: 10px;
+      padding: 13px 16px;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      width: 100%;
+    }
+
+    .form-field input:focus {
+      border-color: #111;
+      background: #fff;
+      box-shadow: 0 0 0 3px rgba(0,0,0,0.05);
+    }
+
+    .form-field input::placeholder {
+      color: #bbb;
+      font-weight: 300;
+    }
+
+    /* ── Opciones tipo radio estilizadas ── */
+    .radio-group {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .radio-option {
+      flex: 1;
+      min-width: 90px;
+    }
+
+    .radio-option input[type="radio"] {
+      display: none;
+    }
+
+    .radio-option label {
+      display: block;
       text-align: center;
-      margin-bottom: 30px;
+      padding: 12px 10px;
+      border: 1.5px solid #e0e0e0;
+      border-radius: 10px;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: #555;
+      background: #fafaf8;
+      transition: all 0.2s ease;
+      text-transform: none;
+      letter-spacing: 0;
     }
 
-    .cta-form-top button {
-      background-color: #007BFF;
+    .radio-option input[type="radio"]:checked + label {
+      background: #111;
+      color: #fff;
+      border-color: #111;
+      font-weight: 500;
+    }
+
+    .radio-option label:hover {
+      border-color: #999;
+      background: #f5f5f3;
+    }
+
+    /* ── Divider ── */
+    .form-divider {
+      border: none;
+      border-top: 1px solid #f0f0f0;
+      margin: 28px 0;
+    }
+
+    .form-section-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: #999;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    /* ── CTA Button ── */
+    .btn-submit {
+      width: 100%;
+      padding: 16px;
+      background: #111;
       color: #fff;
       border: none;
-      padding: 15px 40px;
-      font-size: 1.1rem;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    .cta-form-top button:hover {
-      background-color: #0056b3;
-    }
-
-    /* Formulario embebido */
-    .form-google {
-      width: 100%;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
       border-radius: 12px;
-      overflow: hidden;
-      margin-bottom: 60px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      letter-spacing: 0.03em;
+      margin-top: 32px;
+      transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .btn-submit:hover {
+      background: #000;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+    }
+
+    .btn-submit:active { transform: translateY(0); }
+
+    .btn-submit:disabled {
+      background: #999;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    .btn-arrow { transition: transform 0.2s ease; }
+    .btn-submit:hover .btn-arrow { transform: translateX(4px); }
+
+    /* ── Mensaje de confirmación ── */
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 48px 20px;
+      animation: fadeInUp 0.5s ease;
+    }
+
+    .form-success.visible { display: block; }
+
+    .success-icon {
+      width: 64px;
+      height: 64px;
+      background: #111;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      font-size: 1.6rem;
+      color: #fff;
+    }
+
+    .form-success h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 600;
+      color: #111;
+      margin-bottom: 12px;
+    }
+
+    .form-success p {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.97rem;
+      color: #666;
+      line-height: 1.7;
+      max-width: 400px;
+      margin: 0 auto 28px;
+    }
+
+    .btn-volver-inicio {
+      display: inline-block;
+      padding: 12px 28px;
+      background: #111;
+      color: #fff;
+      border-radius: 10px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background 0.2s ease;
+    }
+
+    .btn-volver-inicio:hover { background: #000; }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Disclaimer ── */
+    .form-disclaimer {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.78rem;
+      color: #aaa;
+      text-align: center;
+      margin-top: 16px;
+      line-height: 1.5;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .captacion-page { padding: 40px 16px 60px; }
+      .pasos-grid { grid-template-columns: repeat(2, 1fr); }
+      .form-card { padding: 32px 24px; }
+      .form-row { grid-template-columns: 1fr; gap: 16px; }
+    }
+
+    @media (max-width: 480px) {
+      .pasos-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .paso-item { padding: 16px 10px; }
+      .form-card { padding: 24px 16px; border-radius: 14px; }
     }
   </style>
 </head>
 
 <body>
 
-  <!-- HEADER cargado dinámicamente desde header.html -->
   <div id="header-container"></div>
 
-  <!-- MÓDULO PUBLICA TU PROPIEDAD -->
-  <section id="publica-tu-propiedad" class="captura-cliente">
-    <h2>Publica tu propiedad</h2>
+  <!-- iframe oculto para recibir respuesta de Google Forms sin redirigir -->
+  <iframe name="hidden-form-target" style="display:none;"></iframe>
 
-    <!-- PASOS DEL PROCESO -->
-    <div class="lista-pasos">
-      <p>Para comercializar tu propiedad con nosotros, sigue estos pasos:</p>
-      <ol>
-        <li>Completa el formulario con los datos de tu propiedad.</li>
-        <li>Nos pondremos en contacto contigo para formalizar la comercialización.</li>
-        <li>Tu propiedad será incorporada a nuestro catálogo en pocos días.</li>
-        <li>Acompañamiento continuo hasta el cierre del negocio.</li>
-      </ol>
+  <div class="captacion-page">
+
+    <!-- Hero -->
+    <div class="captacion-hero">
+      <span class="captacion-eyebrow">Portal33 · Zona Norte Bogotá</span>
+      <h1>Publica tu<br>propiedad con nosotros</h1>
+      <p>Te acompañamos en todo el proceso de comercialización. Completa el formulario y en pocos días tu propiedad estará en nuestro catálogo.</p>
     </div>
 
-    <!-- BOTÓN CTA — lleva al formulario -->
-    <div class="cta-form-top">
-      <button id="scrollToForm">Comenzar ahora</button>
+    <!-- Pasos -->
+    <div class="pasos-grid">
+      <div class="paso-item">
+        <div class="paso-num">01</div>
+        <div class="paso-txt">Completa el formulario con los datos de tu propiedad</div>
+      </div>
+      <div class="paso-item">
+        <div class="paso-num">02</div>
+        <div class="paso-txt">Nos ponemos en contacto para formalizar la comercialización</div>
+      </div>
+      <div class="paso-item">
+        <div class="paso-num">03</div>
+        <div class="paso-txt">Tu propiedad se incorpora al catálogo en pocos días</div>
+      </div>
+      <div class="paso-item">
+        <div class="paso-num">04</div>
+        <div class="paso-txt">Acompañamiento continuo hasta el cierre del negocio</div>
+      </div>
     </div>
 
-    <!-- FORMULARIO GOOGLE FORM EMBEBIDO -->
-    <div class="form-google">
-      <iframe
-        id="googleForm"
-        src="https://docs.google.com/forms/d/e/1FAIpQLSchpVm-85aOhPa_n76HtO9T1RFZ9RhJkhi8hoaRgoRHj2ptUw/viewform?usp=sf_link"
-        width="100%"
-        height="800"
-        frameborder="0"
-        marginheight="0"
-        marginwidth="0"
-        title="Formulario de captación de propiedades Portal33">
-        Cargando formulario...
-      </iframe>
+    <!-- Card formulario -->
+    <div class="form-card">
+
+      <div id="form-wrapper">
+        <div class="form-card-title">Datos de contacto y propiedad</div>
+
+        <form
+          id="captacion-form"
+          action="https://docs.google.com/forms/d/e/1FAIpQLSchpVm-85aOhPa_n76HtO9T1RFZ9RhJkhi8hoaRgoRHj2ptUw/formResponse"
+          method="POST"
+          target="hidden-form-target"
+          onsubmit="handleSubmit(event)">
+
+          <!-- Campo oculto del sistema -->
+          <input type="hidden" name="entry.1434623467" value="Si">
+
+          <!-- Nombre + Teléfono -->
+          <div class="form-row">
+            <div class="form-field">
+              <label for="nombre">Nombre completo</label>
+              <input type="text" id="nombre" name="entry.446265884" placeholder="Tu nombre" required>
+            </div>
+            <div class="form-field">
+              <label for="telefono">Teléfono</label>
+              <input type="tel" id="telefono" name="entry.284186345" placeholder="300 000 0000" required>
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="form-row full">
+            <div class="form-field">
+              <label for="email">Correo electrónico</label>
+              <input type="email" id="email" name="entry.816083926" placeholder="correo@ejemplo.com" required>
+            </div>
+          </div>
+
+          <!-- Dirección -->
+          <div class="form-row full">
+            <div class="form-field">
+              <label for="direccion">Dirección de la propiedad</label>
+              <input type="text" id="direccion" name="entry.2073414963" placeholder="Calle, número, barrio" required>
+            </div>
+          </div>
+
+          <hr class="form-divider">
+
+          <!-- Tipo de propiedad -->
+          <p class="form-section-label">Tipo de propiedad</p>
+          <div class="form-row full" style="margin-bottom:24px;">
+            <div class="radio-group">
+              <div class="radio-option">
+                <input type="radio" id="tipo-residencial" name="entry.2042975081" value="Residential" required>
+                <label for="tipo-residencial">Residencial</label>
+              </div>
+              <div class="radio-option">
+                <input type="radio" id="tipo-comercial" name="entry.2042975081" value="Commercial">
+                <label for="tipo-comercial">Comercial</label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tipo de negocio -->
+          <p class="form-section-label">Tipo de negocio</p>
+          <div class="form-row full" style="margin-bottom:8px;">
+            <div class="radio-group">
+              <div class="radio-option">
+                <input type="radio" id="neg-venta" name="entry.1491274735" value="Sell" required>
+                <label for="neg-venta">Venta</label>
+              </div>
+              <div class="radio-option">
+                <input type="radio" id="neg-arriendo" name="entry.1491274735" value="Rent">
+                <label for="neg-arriendo">Arriendo</label>
+              </div>
+              <div class="radio-option">
+                <input type="radio" id="neg-ambos" name="entry.1491274735" value="Sell / Rent">
+                <label for="neg-ambos">Venta / Arriendo</label>
+              </div>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-submit" id="submit-btn">
+            <span>Enviar solicitud</span>
+            <span class="btn-arrow">→</span>
+          </button>
+
+          <p class="form-disclaimer">Al enviar este formulario aceptas que Portal33 se ponga en contacto contigo para gestionar la comercialización de tu propiedad.</p>
+
+        </form>
+      </div>
+
+      <!-- Confirmación -->
+      <div class="form-success" id="form-success">
+        <div class="success-icon">✓</div>
+        <h2>¡Solicitud enviada!</h2>
+        <p>Recibimos los datos de tu propiedad. Nos pondremos en contacto contigo en las próximas 24 horas para continuar el proceso.</p>
+        <a href="index.html" class="btn-volver-inicio">Volver al inicio</a>
+      </div>
+
     </div>
+  </div>
 
-  </section>
-
-  <!-- FOOTER cargado dinámicamente desde footer.html -->
   <div id="footer-container"></div>
 
-  <!-- Scripts de módulos -->
   <script src="js/header-loader.js"></script>
+  <script src="js/header.js"></script>
   <script src="js/footer-loader.js"></script>
   <script src="js/menu-mobile.js"></script>
 
-  <!-- Scroll al formulario -->
   <script>
-    document.getElementById("scrollToForm").addEventListener("click", function () {
-      document.getElementById("googleForm").scrollIntoView({ behavior: "smooth" });
-    });
+    function handleSubmit(e) {
+      const btn = document.getElementById("submit-btn");
+      btn.disabled = true;
+      btn.innerHTML = '<span>Enviando...</span>';
+      setTimeout(() => {
+        document.getElementById("form-wrapper").style.display = "none";
+        document.getElementById("form-success").classList.add("visible");
+      }, 2000);
+    }
   </script>
 
 </body>

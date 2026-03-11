@@ -10,67 +10,477 @@
   <link rel="icon" href="img/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/notificaciones.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    .notificaciones-page {
+      min-height: calc(100vh - var(--header-height));
+      background: #fafaf8;
+      padding: 60px 20px 80px;
+    }
+
+    .notif-hero {
+      max-width: 700px;
+      margin: 0 auto 56px;
+      text-align: center;
+    }
+
+    .notif-eyebrow {
+      display: inline-block;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 18px;
+      padding: 6px 16px;
+      border: 1px solid #ddd;
+      border-radius: 20px;
+      background: #fff;
+    }
+
+    .notif-hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      font-weight: 600;
+      color: #111;
+      line-height: 1.15;
+      margin-bottom: 18px;
+      letter-spacing: -0.01em;
+    }
+
+    .notif-hero p {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      color: #666;
+      line-height: 1.7;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    .pasos-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      max-width: 860px;
+      margin: 0 auto 56px;
+    }
+
+    .paso-item {
+      background: #fff;
+      border: 1px solid #e8e8e8;
+      border-radius: 12px;
+      padding: 20px 16px;
+      text-align: center;
+      transition: box-shadow 0.25s ease, transform 0.25s ease;
+    }
+
+    .paso-item:hover {
+      box-shadow: 0 8px 24px rgba(0,0,0,0.07);
+      transform: translateY(-2px);
+    }
+
+    .paso-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #111;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+
+    .paso-txt {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.82rem;
+      color: #666;
+      line-height: 1.5;
+    }
+
+    .form-card {
+      max-width: 720px;
+      margin: 0 auto;
+      background: #fff;
+      border: 1px solid #e8e8e8;
+      border-radius: 20px;
+      padding: 48px 52px;
+      box-shadow: 0 4px 40px rgba(0,0,0,0.06);
+    }
+
+    .form-card-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: #111;
+      margin-bottom: 32px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .form-row.full { grid-template-columns: 1fr; }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .form-field label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #444;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .form-field input,
+    .form-field textarea {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.97rem;
+      color: #111;
+      background: #fafaf8;
+      border: 1.5px solid #e0e0e0;
+      border-radius: 10px;
+      padding: 13px 16px;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      width: 100%;
+    }
+
+    .form-field textarea {
+      resize: vertical;
+      min-height: 130px;
+      line-height: 1.6;
+    }
+
+    .form-field input:focus,
+    .form-field textarea:focus {
+      border-color: #111;
+      background: #fff;
+      box-shadow: 0 0 0 3px rgba(0,0,0,0.05);
+    }
+
+    .form-field input::placeholder,
+    .form-field textarea::placeholder {
+      color: #bbb;
+      font-weight: 300;
+    }
+
+    .radio-group {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .radio-option { flex: 1; min-width: 90px; }
+
+    .radio-option input[type="radio"] { display: none; }
+
+    .radio-option label {
+      display: block;
+      text-align: center;
+      padding: 12px 10px;
+      border: 1.5px solid #e0e0e0;
+      border-radius: 10px;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: #555;
+      background: #fafaf8;
+      transition: all 0.2s ease;
+      text-transform: none;
+      letter-spacing: 0;
+    }
+
+    .radio-option input[type="radio"]:checked + label {
+      background: #111;
+      color: #fff;
+      border-color: #111;
+      font-weight: 500;
+    }
+
+    .radio-option label:hover {
+      border-color: #999;
+      background: #f5f5f3;
+    }
+
+    .form-divider {
+      border: none;
+      border-top: 1px solid #f0f0f0;
+      margin: 28px 0;
+    }
+
+    .form-section-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: #999;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: 16px;
+      background: #111;
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      letter-spacing: 0.03em;
+      margin-top: 32px;
+      transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .btn-submit:hover {
+      background: #000;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+    }
+
+    .btn-submit:active { transform: translateY(0); }
+
+    .btn-submit:disabled {
+      background: #999;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    .btn-arrow { transition: transform 0.2s ease; }
+    .btn-submit:hover .btn-arrow { transform: translateX(4px); }
+
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 48px 20px;
+      animation: fadeInUp 0.5s ease;
+    }
+
+    .form-success.visible { display: block; }
+
+    .success-icon {
+      width: 64px;
+      height: 64px;
+      background: #111;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      font-size: 1.6rem;
+      color: #fff;
+    }
+
+    .form-success h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 600;
+      color: #111;
+      margin-bottom: 12px;
+    }
+
+    .form-success p {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.97rem;
+      color: #666;
+      line-height: 1.7;
+      max-width: 400px;
+      margin: 0 auto 28px;
+    }
+
+    .btn-volver-inicio {
+      display: inline-block;
+      padding: 12px 28px;
+      background: #111;
+      color: #fff;
+      border-radius: 10px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background 0.2s ease;
+    }
+
+    .btn-volver-inicio:hover { background: #000; }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .form-disclaimer {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.78rem;
+      color: #aaa;
+      text-align: center;
+      margin-top: 16px;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 768px) {
+      .notificaciones-page { padding: 40px 16px 60px; }
+      .pasos-grid { grid-template-columns: repeat(2, 1fr); }
+      .form-card { padding: 32px 24px; }
+      .form-row { grid-template-columns: 1fr; gap: 16px; }
+    }
+
+    @media (max-width: 480px) {
+      .pasos-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .paso-item { padding: 16px 10px; }
+      .form-card { padding: 24px 16px; border-radius: 14px; }
+    }
+  </style>
 </head>
 
 <body>
 
-  <!-- HEADER cargado dinámicamente desde modules/header.html -->
   <div id="header-container"></div>
 
-  <!-- MÓDULO NOTIFICACIONES / BÚSQUEDA -->
-  <section id="notificaciones-busqueda" class="captura-usuario">
-    <h2>Notificaciones / Búsqueda</h2>
+  <iframe name="hidden-form-target" style="display:none;"></iframe>
 
-    <!-- PASOS DEL PROCESO -->
-    <div class="lista-pasos">
-      <p>Para recibir propiedades o dejarnos tu requerimiento, sigue estos pasos:</p>
-      <ol>
-        <li>Deja tus datos de contacto.</li>
-        <li>Selecciona el tipo de propiedad o requerimiento.</li>
-        <li>Recibe notificaciones de nuevas propiedades directamente en tu celular o correo.</li>
-        <li>Si no encontraste lo que buscas, déjanos tu solicitud en el formulario.</li>
-      </ol>
+  <div class="notificaciones-page">
+
+    <div class="notif-hero">
+      <span class="notif-eyebrow">Portal33 · Zona Norte Bogotá</span>
+      <h1>Encuentra la propiedad<br>que estás buscando</h1>
+      <p>Déjanos tu requerimiento y te notificamos cuando tengamos una propiedad que se ajuste a lo que necesitas.</p>
     </div>
 
-    <!-- BOTÓN CTA — lleva al formulario -->
-    <div class="cta-form-top">
-      <button id="scrollToForm">Comenzar ahora</button>
+    <div class="pasos-grid">
+      <div class="paso-item">
+        <div class="paso-num">01</div>
+        <div class="paso-txt">Deja tus datos de contacto</div>
+      </div>
+      <div class="paso-item">
+        <div class="paso-num">02</div>
+        <div class="paso-txt">Selecciona el tipo de propiedad que buscas</div>
+      </div>
+      <div class="paso-item">
+        <div class="paso-num">03</div>
+        <div class="paso-txt">Describe con detalle lo que necesitas</div>
+      </div>
+      <div class="paso-item">
+        <div class="paso-num">04</div>
+        <div class="paso-txt">Te avisamos en cuanto tengamos algo para ti</div>
+      </div>
     </div>
 
-    <!-- FORMULARIO GOOGLE FORM EMBEBIDO -->
-    <div class="form-google">
-      <iframe
-        id="googleForm"
-        src="https://docs.google.com/forms/d/e/1FAIpQLSdKdP1P9vkldgIZWA5symwzMS9_TQ35wYC1dw3xsldeMkGeog/viewform?usp=sf_link"
-        width="100%"
-        height="800"
-        frameborder="0"
-        marginheight="0"
-        marginwidth="0"
-        title="Formulario de notificaciones y búsqueda de propiedades Portal33">
-        Cargando formulario...
-      </iframe>
+    <div class="form-card" id="googleForm">
+
+      <div id="form-wrapper">
+        <div class="form-card-title">Tu requerimiento de búsqueda</div>
+
+        <form
+          id="notif-form"
+          action="https://docs.google.com/forms/d/e/1FAIpQLSdKdP1P9vkldgIZWA5symwzMS9_TQ35wYC1dw3xsldeMkGeog/formResponse"
+          method="POST"
+          target="hidden-form-target"
+          onsubmit="handleSubmit(event)">
+
+          <input type="hidden" name="entry.2084520860" value="Si">
+
+          <div class="form-row">
+            <div class="form-field">
+              <label for="nombre">Nombre</label>
+              <input type="text" id="nombre" name="entry.384361991" placeholder="Tu nombre" required>
+            </div>
+            <div class="form-field">
+              <label for="telefono">Teléfono</label>
+              <input type="tel" id="telefono" name="entry.714459846" placeholder="300 000 0000" required>
+            </div>
+          </div>
+
+          <div class="form-row full">
+            <div class="form-field">
+              <label for="email">Correo electrónico</label>
+              <input type="email" id="email" name="entry.1934237235" placeholder="correo@ejemplo.com" required>
+            </div>
+          </div>
+
+          <hr class="form-divider">
+
+          <p class="form-section-label">Tipo de propiedad</p>
+          <div class="form-row full" style="margin-bottom:24px;">
+            <div class="radio-group">
+              <div class="radio-option">
+                <input type="radio" id="tipo-residencial" name="entry.1630467712" value="Residential" required>
+                <label for="tipo-residencial">Residencial</label>
+              </div>
+              <div class="radio-option">
+                <input type="radio" id="tipo-comercial" name="entry.1630467712" value="Commercial">
+                <label for="tipo-comercial">Comercial</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row full">
+            <div class="form-field">
+              <label for="descripcion">¿Qué estás buscando?</label>
+              <textarea
+                id="descripcion"
+                name="entry.2142053624"
+                placeholder="Cuéntanos sobre la propiedad que buscas: zona, tamaño, presupuesto, características especiales..."
+                required></textarea>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-submit" id="submit-btn">
+            <span>Enviar requerimiento</span>
+            <span class="btn-arrow">→</span>
+          </button>
+
+          <p class="form-disclaimer">Portal33 usará esta información únicamente para notificarte sobre propiedades disponibles que coincidan con tu búsqueda.</p>
+
+        </form>
+      </div>
+
+      <div class="form-success" id="form-success">
+        <div class="success-icon">✓</div>
+        <h2>¡Requerimiento registrado!</h2>
+        <p>Recibimos tu solicitud. Te notificaremos en cuanto tengamos una propiedad que se ajuste a lo que buscas.</p>
+        <a href="propiedades.html" class="btn-volver-inicio">Ver propiedades disponibles</a>
+      </div>
+
     </div>
+  </div>
 
-  </section>
-
-  <!-- FOOTER cargado dinámicamente desde modules/footer.html -->
   <div id="footer-container"></div>
 
-  <!-- =======================================
-       SCRIPTS
-       Orden requerido:
-       1. header-loader  → inyecta HTML del header
-       2. header.js      → enlace activo + submódulos
-       3. footer-loader  → inyecta HTML del footer
-       4. menu-mobile    → menú responsive
-       5. notificaciones → scroll del CTA al formulario
-  ======================================= -->
   <script src="js/header-loader.js"></script>
   <script src="js/header.js"></script>
   <script src="js/footer-loader.js"></script>
   <script src="js/menu-mobile.js"></script>
   <script src="js/notificaciones.js"></script>
+
+  <script>
+    function handleSubmit(e) {
+      const btn = document.getElementById("submit-btn");
+      btn.disabled = true;
+      btn.innerHTML = '<span>Enviando...</span>';
+      setTimeout(() => {
+        document.getElementById("form-wrapper").style.display = "none";
+        document.getElementById("form-success").classList.add("visible");
+      }, 2000);
+    }
+  </script>
 
 </body>
 </html>
